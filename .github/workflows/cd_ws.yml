@@ -24,9 +24,9 @@ jobs:
           push: true
           tags: namankumarsaxena/todo-app-websocket:${{ github.sha }} 
 
-      - name: Deploy to the VM
-        run: | 
-          echo "${{ secrets.SSH_PRIVATE_KEY}}" &> ~/ssh_key
+      # - name: Deploy to the VM
+      #   run: | 
+      #     echo "${{ secrets.SSH_PRIVATE_KEY}}" > ~/ssh_key
          
-          chmod 700 /home/runner/ssh_key
-           ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@13.60.4.60 -t "sudo docker stop user_backend && sudo docker run --name user_backend -d -p 8080:8080 namankumarsaxena/todo-app-backend:${{ github.sha }}"
+      #     chmod 700 /home/runner/ssh_key
+      #      ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@13.60.4.60 -t "sudo docker stop user_backend && sudo docker rm user_backend && sudo docker run --name user_backend -d -p 8080:8080 namankumarsaxena/todo-app-websocket:${{ github.sha }}"
